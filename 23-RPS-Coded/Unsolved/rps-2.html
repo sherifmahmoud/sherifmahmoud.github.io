@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+
+  <div id="game">
+    <h1>Please click r, s, or p...</h1>
+    <h2 id="user_choice"></h2>
+    <h2 id="computer_choice"></h2>
+    <h3 id="num_Wins"></h3>
+    <h3 id="num_losses"></h3>
+    <h3 id="num_ties"></h3>
+  </div>
+
+  <script type="text/javascript">
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+    var numLosses = 0;
+    var numWins = 0;
+    var numTies = 0;
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function (event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key.toLowerCase();
+      if (userGuess === 'r' || userGuess === 'p' || userGuess === 's') {
+
+        // Randomly chooses a choice from the options array. This is the Computer's guess.
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+        if (userGuess === computerGuess) {
+          numTies++;
+          alert("TIE!!!");
+        } else if (userGuess === 'r') {
+          switch (computerGuess) {
+            case 'p':
+              numLosses++;
+              alert("YOU LOSE!!!");
+              break;
+            case 's':
+              numWins++;
+              alert("YOU WIN!!!");
+              break;
+          }
+        } else if (userGuess === 'p') {
+          switch (computerGuess) {
+            case 'r':
+              numWins++;
+              alert("YOU WIN!!!");
+              break;
+            case 's':
+              numLosses++;
+              alert("YOU LOSE!!!");
+              break;
+          }
+        } else if (userGuess === 's') {
+          switch (computerGuess) {
+            case 'r':
+              numLosses++;
+              alert("YOU LOSE!!!");
+              break;
+            case 'p':
+              numWins++;
+              alert("YOU WIN!!!");
+              break;
+          }
+        }
+      }//if key is r, s, p*/
+      document.getElementById("user_choice").textContent = "User Chose: " + userGuess;
+      document.getElementById("computer_choice").textContent = "Computer Chose: " + computerGuess;
+      document.getElementById("num_Wins").textContent = "Wins: " + numWins;
+      document.getElementById("num_losses").textContent = "Losses: " + numLosses;
+      document.getElementById("num_ties").textContent = "Ties: " + numTies;
+    }//onkeyup
+  </script>
+
+</body>
+
+</html>

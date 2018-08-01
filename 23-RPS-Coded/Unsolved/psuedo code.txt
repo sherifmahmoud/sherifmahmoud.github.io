@@ -1,0 +1,7 @@
+on key up:
+
+1. make sure the user chose r, p, or sure
+2. randomly choose r, s, p
+3. compare the user choice to the computer choice to determine the winner
+4. save the results somewhere.
+5. print the current stateof results
